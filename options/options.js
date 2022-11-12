@@ -8,7 +8,6 @@ function onTextEnabledChange() {
 }
 
 function saveOptions() {
-  const memeMode = document.getElementById("memeMode").checked;
   const textEnabled = document.getElementById("textEnabled").checked;
   const textVerifiedLabel = document.getElementById("textVerifiedLabel").value;
   const twitterBlueVerifiedLabel = document.getElementById(
@@ -20,7 +19,6 @@ function saveOptions() {
   ).checked;
   chrome.storage.local.set(
     {
-      memeMode,
       textEnabled,
       removeBlueVerification,
       textOptions: {
@@ -44,7 +42,6 @@ function closeOptions() {
 function restoreOptions() {
   chrome.storage.local.get(
     {
-      memeMode: false,
       textEnabled: true,
       removeBlueVerification: false,
       textOptions: {
@@ -54,7 +51,6 @@ function restoreOptions() {
       },
     },
     function (items) {
-      document.getElementById("memeMode").checked = items.memeMode;
       document.getElementById("textEnabled").checked = items.textEnabled;
       document.getElementById("textVerifiedLabel").value =
         items.textOptions.verifiedLabel;
